@@ -91,7 +91,7 @@ window.UtilizationCalculator = (function ($, undefined) {
 			var itemObj = {
 				'co': item[_timeSheetIndex('Co')],
 				'psid': item[_timeSheetIndex('PSID')],
-				'hours': item[_timeSheetIndex('Client Nonbillable Hours')]
+				'hours': item[_timeSheetIndex('Client Billable Hours')]
 			};
 			if (filter(itemObj.co, itemObj.psid)) {
 				chinaTimeSheet.push(itemObj);
