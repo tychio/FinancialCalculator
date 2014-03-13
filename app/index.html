@@ -1,0 +1,123 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>TW_UTILIZATION</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css styles/vendor.css -->
+        <!-- bower:css -->
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- endbuild -->
+    </head>
+    <body>
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+
+        <div class="container">
+            <div class="main">
+                <div>
+                    <h3>Calculating Utilization - <label id="currentType">TBS</label></h3>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger btn-lg calculate" data-type="TBS">TBS</button>
+                        <button type="button" class="btn btn-danger  btn-lg calculate" data-type="TCC">TCC</button>
+                        <button type="button" class="btn btn-danger  btn-lg calculate" data-type="TCX">TCX</button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-success  btn-lg calculate" data-type="Cloudy team">Cloudy</button>
+                        <button type="button" class="btn btn-success  btn-lg calculate" data-type="Product team">Product</button>
+                        <button type="button" class="btn btn-success  btn-lg calculate" data-type="Consulting team">Consulting</button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-info btn-lg calculate" data-type="TBS_ALL">TBS ALL</button>
+                        <button type="button" class="btn btn-info  btn-lg calculate" data-type="TCC_ALL">TCC ALL</button>
+                        <button type="button" class="btn btn-info  btn-lg calculate" data-type="TCX_ALL">TCX ALL</button>
+                    </div>
+                </div>
+                <div class="well" role="output">
+                    <div class="form-group clearfix">
+                        <label class="control-label col-lg-9 col-md-8 col-xs-6">Utilization: </label>
+                        <div class="col-lg-3 col-md-4 col-xs-6">
+                            <input type="text" class="form-control" id="op_utilization">
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="control-label col-lg-9 col-md-8 col-xs-6">Client Billable Hours Sum: </label>
+                        <div class="col-lg-3 col-md-4 col-xs-6">
+                            <input type="text" class="form-control" id="op_hours">
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="control-label col-lg-9 col-md-8 col-xs-6">Number of people: </label>
+                        <div class="col-lg-3 col-md-4 col-xs-6">
+                            <input type="text" class="form-control" id="op_count">
+                        </div>
+                    </div>
+                </div>
+                <div role="form">
+                    <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                        <label for="workDays">Work Days</label>
+                        <input type="number" value="23" class="form-control" id="workDays" placeholder="Enter work days">
+                    </div>
+                    <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                        <label for="hoursDaily">Hours Daily</label>
+                        <input type="number" value="8" class="form-control" id="hoursDaily" placeholder="Enter work hours daily">
+                    </div>
+                    <div class="form-group col-lg-12 col-md-12 col-xs-12">
+                        <label for="timeSheet">Time Sheet</label>
+                        <textarea class="form-control excel-text" id="timeSheet" placeholder="Copy and paste time sheet"></textarea>
+                    </div>
+                    <div class="form-group col-lg-12 col-md-12 col-xs-12">
+                        <label for="teamList">Team List</label>
+                        <textarea class="form-control excel-text" id="teamList" placeholder="Copy and paste team list"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <p>&copy;2014&nbsp;&nbsp;<b>Thought</b>Works Inc.</p>
+            </div>
+        </div>
+
+
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- build:js scripts/plugins.js -->
+        <script src="bower_components/bootstrap/js/affix.js"></script>
+        <script src="bower_components/bootstrap/js/alert.js"></script>
+        <script src="bower_components/bootstrap/js/dropdown.js"></script>
+        <script src="bower_components/bootstrap/js/tooltip.js"></script>
+        <script src="bower_components/bootstrap/js/modal.js"></script>
+        <script src="bower_components/bootstrap/js/transition.js"></script>
+        <script src="bower_components/bootstrap/js/button.js"></script>
+        <script src="bower_components/bootstrap/js/popover.js"></script>
+        <script src="bower_components/bootstrap/js/carousel.js"></script>
+        <script src="bower_components/bootstrap/js/scrollspy.js"></script>
+        <script src="bower_components/bootstrap/js/collapse.js"></script>
+        <script src="bower_components/bootstrap/js/tab.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js({app,.tmp}) scripts/main.js -->
+        <script src="scripts/main.js"></script>
+        <script type="text/javascript">
+            $('.calculate').click(function () {
+                UtilizationCalculator($(this).data('type'));
+            });
+        </script>
+        <!-- endbuild -->
+</body>
+</html>
